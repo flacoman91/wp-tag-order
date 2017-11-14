@@ -1,5 +1,5 @@
 {
-    "name": "flacoman91/wp-tag-order",
+    "name": "sectsect/wp-tag-order",
     "description": "Sort the tags manually in individual posts on wordpress.",
 	"keywords": ["github", "wordpress", "plugin", "tags", "order"],
     "type": "wordpress-plugin",
