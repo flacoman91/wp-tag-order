@@ -113,7 +113,7 @@ function load_wpto_admin_script( $hook ) {
     global $post;
     if ( $hook == 'post-new.php' || $hook == 'post.php' ) {
 		$pt = wto_has_tag_posttype();
-		if ( in_array( $post->post_type, $pt ) ) {
+		if ( $post && in_array( $post->post_type, $pt ) ) {
 			wp_enqueue_style( 'wto-style', plugin_dir_url(dirname(__FILE__)) . 'assets/css/admin.css', array() );
 			// wp_enqueue_script( 'jquery-ui-sortable' );
     		wp_enqueue_script( 'wto-script', plugin_dir_url(dirname(__FILE__)) . 'assets/js/script.js', array() );
@@ -132,7 +132,7 @@ add_action( 'admin_enqueue_scripts', 'load_wpto_admin_script', 10, 1 );
 ================================================== */
 add_action( 'admin_menu', 'wpto_menu' );
 function wpto_menu() {
-    $page_hook_suffix = add_options_page( 'WP Tag Order', 'WP Tag Order', 8, 'wpto_menu', 'wpto_options_page' );
+    $page_hook_suffix = add_options_page( 'WP Tag Order', 'WP Tag Order', 'manage_options', 'wpto_menu', 'wpto_options_page' );
     add_action( 'admin_print_styles-' . $page_hook_suffix, 'wpto_admin_styles' );
     add_action( 'admin_print_scripts-' . $page_hook_suffix, 'wpto_admin_scripts' );
     add_action( 'admin_init', 'register_wpto_settings' );
